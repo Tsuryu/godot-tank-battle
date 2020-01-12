@@ -1,0 +1,360 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://maps/Map.gd" type="Script" id=1]
+[ext_resource path="res://terrain/terrain_tile.tres" type="TileSet" id=2]
+[ext_resource path="res://tanks/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://tanks/EnemyTank.tscn" type="PackedScene" id=4]
+[ext_resource path="res://ui/HUD.tscn" type="PackedScene" id=5]
+[ext_resource path="res://tanks/GunTurret.tscn" type="PackedScene" id=6]
+[ext_resource path="res://environment/Obstacle.tscn" type="PackedScene" id=7]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 1089.79, 378.169, -3.95435, -79.6953, 3.95435, 79.6953, 1091.35, 504.181, 0, 0, 0, 0, 996.921, 575.881, 84.3446, 2.23092, -84.3446, -2.23092, 777.825, 571.82, 0, 0, 0, 0, 704.866, 639.201, 3.77765, -85.12, -3.77765, 85.12, 705.129, 884.068, -36.3685, -0.734791, 36.3685, 0.734791, 775.378, 961.319, -75.833, -2.24004, 75.833, 2.24004, 1260.82, 960.799, -4.69909, -52.6121, 4.69909, 52.6121, 1342.49, 1009.4, -103.689, -2.21018, 103.689, 2.21018, 1437.08, 1086.62, -111.424, 0.119457, 111.424, -0.119457, 2647.11, 1089.62, -1.47539, 67.3206, 1.47539, -67.3206, 2754.41, 1002.16, 1.6355, 82.0191, -1.6355, -82.0191, 2752.74, 778.771, -26.3061, 2.34955, 26.3061, -2.34955, 2815.66, 702.809, 4.7497, 99.8127, -4.7497, -99.8127, 2887.17, 615.382, -3.75857, 102.917, 3.75857, -102.917, 2885.51, 402.019, 53.3917, 0.716541, -53.3917, -0.716541, 2805.22, 314.755, 103.7, 12.2693, -103.7, -12.2693, 1171.35, 317.939, 0, 0, 0, 0, 1089.79, 378.169 )
+}
+
+[sub_resource type="Curve2D" id=2]
+_data = {
+"points": PoolVector2Array( -2.33271, -152.793, 2.33271, 152.793, 2239, -56.0424, -89.8094, -4.66542, 89.8094, 4.66542, 2354.88, 71.1942, -124.8, 1.16636, 124.8, -1.16636, 2786.57, 66.65, 1.16636, -58.3178, -1.16636, 58.3178, 2882, 162.077, 4.66542, -123.634, -4.66542, 123.634, 2879.73, 609.678, -39.6561, 0, 39.6561, 0, 2931.99, 711.921, 12.8299, -108.471, -12.8299, 108.471, 3004.69, 805.077, 0, -117.802, 0, 117.802, 3009.24, 993.66, -78.1458, -1.16636, 78.1458, 1.16636, 3109.21, 1091.36, -110.804, 1.16636, 110.804, -1.16636, 3302.33, 1093.63, 3.49907, -79.3122, -3.49907, 79.3122, 3395.49, 1195.88, -6.99813, -17.4953, 6.99813, 17.4953, 3384.13, 1477.61, 0, 0, 0, 0, 4045.31, 1475.34, 0, 0, 0, 0, 4038.49, 1089.09, 108.471, -3.49907, -108.471, 3.49907, 3745.39, 1093.63, 2.33271, 68.815, -2.33271, -68.815, 3652.24, 986.843, -2.33271, 103.806, 2.33271, -103.806, 3643.15, 800.533, 59.4841, 3.49907, -59.4841, -3.49907, 3581.8, 711.921, 2.33271, 69.9813, -2.33271, -69.9813, 3520.45, 600.589, 0, 0, 0, 0, 3522.73, -199.184, 20.9944, -1.16636, -20.9944, 1.16636, 2250.36, -196.912, 0, 0, 0, 0, 2239, -56.0424 )
+}
+
+[node name="Map01" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Ground" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 128, 128 )
+collision_layer = 0
+collision_mask = 0
+format = 1
+tile_data = PoolIntArray( -1, 10, 0, -65536, 10, 0, -65535, 10, 0, -65534, 10, 0, -65533, 10, 0, -65532, 10, 0, -65531, 1, 0, -65530, 10, 0, -65529, 10, 0, -65528, 1, 0, -65527, 0, 0, -65526, 0, 0, -65525, 0, 0, -65524, 0, 0, -65523, 0, 0, -65522, 0, 0, -65521, 7, 0, -65520, 30, 0, -65519, 21, 0, -65518, 30, 0, -65517, 30, 0, -65516, 30, 0, -65515, 30, 0, -65514, 30, 0, -65513, 30, 0, -65512, 30, 0, -65511, 30, 0, -65510, 30, 0, -65509, 21, 0, -65508, 30, 0, -65507, 30, 0, -65506, 30, 0, 65535, 10, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 1, 0, 6, 0, 0, 7, 0, 0, 8, 1, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 13, 0, 0, 14, 0, 0, 15, 7, 0, 16, 20, 0, 17, 35, 0, 18, 22, 0, 19, 22, 0, 20, 22, 0, 21, 22, 0, 22, 26, 0, 23, 22, 0, 24, 22, 0, 25, 22, 0, 26, 22, 0, 27, 24, 0, 28, 20, 0, 29, 20, 0, 30, 30, 0, 131071, 10, 0, 65536, 0, 0, 65537, 0, 0, 65538, 0, 0, 65539, 0, 0, 65540, 0, 0, 65541, 1, 0, 65542, 0, 0, 65543, 0, 0, 65544, 1, 0, 65545, 0, 0, 65546, 0, 0, 65547, 0, 0, 65548, 0, 0, 65549, 0, 0, 65550, 0, 0, 65551, 7, 0, 65552, 20, 0, 65553, 20, 0, 65554, 20, 0, 65555, 20, 0, 65556, 20, 0, 65557, 20, 0, 65558, 21, 0, 65559, 20, 0, 65560, 20, 0, 65561, 20, 0, 65562, 20, 0, 65563, 21, 0, 65564, 20, 0, 65565, 20, 0, 65566, 30, 0, 196607, 2, 0, 131072, 2, 0, 131073, 2, 0, 131074, 2, 0, 131075, 2, 0, 131076, 2, 0, 131077, 12, 0, 131078, 2, 0, 131079, 2, 0, 131080, 12, 0, 131081, 2, 0, 131082, 2, 0, 131083, 2, 0, 131084, 2, 0, 131085, 2, 0, 131086, 2, 0, 131087, 27, 0, 131088, 22, 0, 131089, 22, 0, 131090, 22, 0, 131091, 22, 0, 131092, 22, 0, 131093, 22, 0, 131094, 24, 0, 131095, 20, 0, 131096, 20, 0, 131097, 20, 0, 131098, 20, 0, 131099, 21, 0, 131100, 20, 0, 131101, 20, 0, 131102, 30, 0, 262143, 10, 0, 196608, 0, 0, 196609, 0, 0, 196610, 0, 0, 196611, 0, 0, 196612, 0, 0, 196613, 1, 0, 196614, 0, 0, 196615, 0, 0, 196616, 1, 0, 196617, 0, 0, 196618, 0, 0, 196619, 0, 0, 196620, 0, 0, 196621, 0, 0, 196622, 0, 0, 196623, 7, 0, 196624, 20, 0, 196625, 20, 0, 196626, 20, 0, 196627, 20, 0, 196628, 20, 0, 196629, 20, 0, 196630, 21, 0, 196631, 20, 0, 196632, 20, 0, 196633, 20, 0, 196634, 20, 0, 196635, 23, 0, 196636, 22, 0, 196637, 22, 0, 196638, 22, 0, 327679, 2, 0, 262144, 2, 0, 262145, 2, 0, 262146, 2, 0, 262147, 2, 0, 262148, 2, 0, 262149, 11, 0, 262150, 2, 0, 262151, 2, 0, 262152, 16, 0, 262153, 0, 0, 262154, 0, 0, 262155, 0, 0, 262156, 0, 0, 262157, 0, 0, 262158, 0, 0, 262159, 7, 0, 262160, 20, 0, 262161, 20, 0, 262162, 20, 0, 262163, 20, 0, 262164, 20, 0, 262165, 20, 0, 262166, 21, 0, 262167, 20, 0, 262168, 20, 0, 262169, 20, 0, 262170, 20, 0, 262171, 21, 0, 262172, 20, 0, 262173, 20, 0, 262174, 30, 0, 393215, 10, 0, 327680, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 1, 0, 327686, 0, 0, 327687, 0, 0, 327688, 0, 0, 327689, 0, 0, 327690, 0, 0, 327691, 0, 0, 327692, 0, 0, 327693, 0, 0, 327694, 0, 0, 327695, 7, 0, 327696, 20, 0, 327697, 20, 0, 327698, 20, 0, 327699, 20, 0, 327700, 20, 0, 327701, 33, 0, 327702, 25, 0, 327703, 26, 0, 327704, 22, 0, 327705, 22, 0, 327706, 26, 0, 327707, 25, 0, 327708, 34, 0, 327709, 20, 0, 327710, 30, 0, 458751, 10, 0, 393216, 0, 0, 393217, 0, 0, 393218, 0, 0, 393219, 0, 0, 393220, 0, 0, 393221, 1, 0, 393222, 0, 0, 393223, 0, 0, 393224, 0, 0, 393225, 0, 0, 393226, 0, 0, 393227, 0, 0, 393228, 0, 0, 393229, 0, 0, 393230, 0, 0, 393231, 7, 0, 393232, 20, 0, 393233, 20, 0, 393234, 20, 0, 393235, 20, 0, 393236, 20, 0, 393237, 21, 0, 393238, 20, 0, 393239, 21, 0, 393240, 20, 0, 393241, 20, 0, 393242, 21, 0, 393243, 20, 0, 393244, 21, 0, 393245, 20, 0, 393246, 30, 0, 524287, 10, 0, 458752, 13, 0, 458753, 2, 0, 458754, 6, 0, 458755, 2, 0, 458756, 2, 0, 458757, 12, 0, 458758, 2, 0, 458759, 2, 0, 458760, 2, 0, 458761, 2, 0, 458762, 14, 0, 458763, 0, 0, 458764, 0, 0, 458765, 0, 0, 458766, 0, 0, 458767, 7, 0, 458768, 20, 0, 458769, 20, 0, 458770, 20, 0, 458771, 20, 0, 458772, 20, 0, 458773, 21, 0, 458774, 20, 0, 458775, 21, 0, 458776, 20, 0, 458777, 20, 0, 458778, 21, 0, 458779, 20, 0, 458780, 21, 0, 458781, 20, 0, 458782, 30, 0, 589823, 10, 0, 524288, 1, 0, 524289, 0, 0, 524290, 1, 0, 524291, 0, 0, 524292, 0, 0, 524293, 1, 0, 524294, 0, 0, 524295, 0, 0, 524296, 0, 0, 524297, 0, 0, 524298, 15, 0, 524299, 2, 0, 524300, 2, 0, 524301, 2, 0, 524302, 2, 0, 524303, 27, 0, 524304, 22, 0, 524305, 22, 0, 524306, 22, 0, 524307, 22, 0, 524308, 22, 0, 524309, 36, 0, 524310, 20, 0, 524311, 35, 0, 524312, 22, 0, 524313, 22, 0, 524314, 24, 0, 524315, 20, 0, 524316, 35, 0, 524317, 22, 0, 524318, 22, 0, 655359, 10, 0, 589824, 15, 0, 589825, 2, 0, 589826, 16, 0, 589827, 0, 0, 589828, 0, 0, 589829, 1, 0, 589830, 0, 0, 589831, 0, 0, 589832, 0, 0, 589833, 0, 0, 589834, 0, 0, 589835, 0, 0, 589836, 0, 0, 589837, 0, 0, 589838, 0, 0, 589839, 7, 0, 589840, 20, 0, 589841, 20, 0, 589842, 20, 0, 589843, 20, 0, 589844, 20, 0, 589845, 20, 0, 589846, 20, 0, 589847, 20, 0, 589848, 20, 0, 589849, 20, 0, 589850, 21, 0, 589851, 20, 0, 589852, 20, 0, 589853, 20, 0, 589854, 30, 0, 720895, 10, 0, 655360, 10, 0, 655361, 10, 0, 655362, 10, 0, 655363, 10, 0, 655364, 10, 0, 655365, 1, 0, 655366, 10, 0, 655367, 10, 0, 655368, 10, 0, 655369, 10, 0, 655370, 10, 0, 655371, 10, 0, 655372, 10, 0, 655373, 10, 0, 655374, 10, 0, 655375, 7, 0, 655376, 30, 0, 655377, 30, 0, 655378, 30, 0, 655379, 30, 0, 655380, 30, 0, 655381, 30, 0, 655382, 30, 0, 655383, 30, 0, 655384, 30, 0, 655385, 30, 0, 655386, 21, 0, 655387, 30, 0, 655388, 30, 0, 655389, 30, 0, 655390, 30, 0 )
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+rotation = -0.000432726
+gun_cooldown = 0.4
+
+[node name="Paths" type="Node2D" parent="."]
+
+[node name="Path2D" type="Path2D" parent="Paths"]
+rotation = 0.00107209
+curve = SubResource( 1 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Paths/Path2D"]
+position = Vector2( 1089.79, 378.169 )
+rotation = 1.61198
+
+[node name="EnemyTank" parent="Paths/Path2D/PathFollow2D" instance=ExtResource( 4 )]
+detect_radius = 500
+
+[node name="Path2D2" type="Path2D" parent="Paths"]
+curve = SubResource( 2 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Paths/Path2D2"]
+position = Vector2( 2239, -56.0424 )
+rotation = 1.55402
+
+[node name="EnemyTank" parent="Paths/Path2D2/PathFollow2D" instance=ExtResource( 4 )]
+position = Vector2( 5.2973, -5.30078 )
+z_index = 1
+detect_radius = 300
+
+[node name="HUD" parent="." instance=ExtResource( 5 )]
+
+[node name="GunTurret" parent="." instance=ExtResource( 6 )]
+position = Vector2( 188.153, 1086.52 )
+
+[node name="GunTurret2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 3190.66, 596.26 )
+
+[node name="GunTurret3" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1348.87, 633.361 )
+
+[node name="Obstacles" type="Node2D" parent="."]
+editor/display_folded = true
+
+[node name="Obstacle" parent="Obstacles" instance=ExtResource( 7 )]
+position = Vector2( 702.825, 1387.66 )
+rotation = 0.895572
+type = 11
+
+[node name="WestForest" type="Node2D" parent="Obstacles"]
+editor/display_folded = true
+
+[node name="LargeTree" parent="Obstacles/WestForest" instance=ExtResource( 7 )]
+position = Vector2( 115.99, -14.3198 )
+rotation = 0.612322
+type = 18
+
+[node name="LargeTree2" parent="Obstacles/WestForest" instance=ExtResource( 7 )]
+position = Vector2( 604.295, -11.4558 )
+rotation = 0.00128835
+type = 18
+
+[node name="LargeTree3" parent="Obstacles/WestForest" instance=ExtResource( 7 )]
+position = Vector2( 4.29596, 217.661 )
+rotation = 1.44374
+type = 18
+
+[node name="LargeTree4" parent="Obstacles/WestForest" instance=ExtResource( 7 )]
+position = Vector2( 4.29596, 217.661 )
+rotation = 1.44374
+type = 18
+
+[node name="LargeTree5" parent="Obstacles/WestForest" instance=ExtResource( 7 )]
+position = Vector2( 4.29596, 217.661 )
+rotation = 1.44374
+type = 18
+
+[node name="LargeTree6" parent="Obstacles/WestForest" instance=ExtResource( 7 )]
+position = Vector2( 1080.21, 742.265 )
+rotation = 1.59614
+type = 18
+
+[node name="LargeTree11" parent="Obstacles/WestForest" instance=ExtResource( 7 )]
+position = Vector2( 970.882, 189.021 )
+rotation = 1.59614
+type = 18
+
+[node name="LargeTree12" parent="Obstacles/WestForest" instance=ExtResource( 7 )]
+position = Vector2( 1811.45, 650.118 )
+rotation = 1.59614
+type = 18
+
+[node name="LargeTree13" parent="Obstacles/WestForest" instance=ExtResource( 7 )]
+position = Vector2( 1759.9, -140.334 )
+rotation = 1.59614
+type = 18
+
+[node name="LargeTree7" parent="Obstacles/WestForest" instance=ExtResource( 7 )]
+position = Vector2( 854.697, 1101.93 )
+rotation = 1.57615
+type = 18
+
+[node name="LargeTree8" parent="Obstacles/WestForest" instance=ExtResource( 7 )]
+position = Vector2( 31.5035, 1370.4 )
+rotation = 1.44374
+type = 18
+
+[node name="LargeTree9" parent="Obstacles/WestForest" instance=ExtResource( 7 )]
+position = Vector2( 489.737, 751.789 )
+rotation = 1.44374
+type = 18
+
+[node name="LargeTree10" parent="Obstacles/WestForest" instance=ExtResource( 7 )]
+position = Vector2( 5.72794, 813.364 )
+rotation = 1.54644
+type = 18
+
+[node name="SmallTree" parent="Obstacles/WestForest" instance=ExtResource( 7 )]
+position = Vector2( 220.525, -10.0238 )
+rotation = 0.475958
+
+[node name="SmallTree10" parent="Obstacles/WestForest" instance=ExtResource( 7 )]
+position = Vector2( 592.839, 442.481 )
+rotation = 0.475958
+
+[node name="SmallTree14" parent="Obstacles/WestForest" instance=ExtResource( 7 )]
+position = Vector2( 2.86392, 1258.71 )
+rotation = 0.475958
+
+[node name="SmallTree21" parent="Obstacles/WestForest" instance=ExtResource( 7 )]
+position = Vector2( 585.679, 1326.01 )
+rotation = 0.475958
+
+[node name="SmallTree22" parent="Obstacles/WestForest" instance=ExtResource( 7 )]
+position = Vector2( 585.679, 1220.05 )
+rotation = 0.475958
+
+[node name="SmallTree23" parent="Obstacles/WestForest" instance=ExtResource( 7 )]
+position = Vector2( 592.839, 1109.78 )
+rotation = 0.475958
+
+[node name="SmallTree27" parent="Obstacles/WestForest" instance=ExtResource( 7 )]
+position = Vector2( 903.959, 816.192 )
+rotation = 0.475958
+
+[node name="SmallTree28" parent="Obstacles/WestForest" instance=ExtResource( 7 )]
+position = Vector2( 962.44, 738.937 )
+rotation = 0.475958
+
+[node name="SmallTree29" parent="Obstacles/WestForest" instance=ExtResource( 7 )]
+position = Vector2( 1184.78, 839.719 )
+rotation = 0.475958
+
+[node name="SmallTree30" parent="Obstacles/WestForest" instance=ExtResource( 7 )]
+position = Vector2( 1221.36, 692.578 )
+rotation = 0.475958
+
+[node name="SmallTree31" parent="Obstacles/WestForest" instance=ExtResource( 7 )]
+position = Vector2( 1582.34, 436.754 )
+rotation = 0.475958
+
+[node name="SmallTree32" parent="Obstacles/WestForest" instance=ExtResource( 7 )]
+position = Vector2( 1427.68, -10.0239 )
+rotation = 0.475958
+
+[node name="SmallTree33" parent="Obstacles/WestForest" instance=ExtResource( 7 )]
+position = Vector2( 1304.53, -22.9117 )
+rotation = 0.475958
+
+[node name="SmallTree34" parent="Obstacles/WestForest" instance=ExtResource( 7 )]
+position = Vector2( 1227.21, 91.6465 )
+rotation = 0.475958
+
+[node name="SmallTree35" parent="Obstacles/WestForest" instance=ExtResource( 7 )]
+position = Vector2( 1457.75, 136.038 )
+rotation = 0.475958
+
+[node name="SmallTree36" parent="Obstacles/WestForest" instance=ExtResource( 7 )]
+position = Vector2( 1333.17, 203.341 )
+rotation = 0.475958
+
+[node name="SmallTree24" parent="Obstacles/WestForest" instance=ExtResource( 7 )]
+position = Vector2( 209.069, 1294.51 )
+rotation = 0.475958
+
+[node name="SmallTree25" parent="Obstacles/WestForest" instance=ExtResource( 7 )]
+position = Vector2( 180.429, 1374.7 )
+rotation = 0.475958
+
+[node name="SmallTree26" parent="Obstacles/WestForest" instance=ExtResource( 7 )]
+position = Vector2( 121.718, 1307.4 )
+rotation = 0.475958
+
+[node name="SmallTree15" parent="Obstacles/WestForest" instance=ExtResource( 7 )]
+position = Vector2( -2.86395, 1075.42 )
+rotation = 0.475958
+
+[node name="SmallTree16" parent="Obstacles/WestForest" instance=ExtResource( 7 )]
+position = Vector2( 1.43195, 936.514 )
+rotation = 0.475958
+
+[node name="SmallTree17" parent="Obstacles/WestForest" instance=ExtResource( 7 )]
+position = Vector2( 156.086, 863.483 )
+rotation = 0.475958
+
+[node name="SmallTree18" parent="Obstacles/WestForest" instance=ExtResource( 7 )]
+position = Vector2( 101.671, 726.013 )
+rotation = 0.475958
+
+[node name="SmallTree19" parent="Obstacles/WestForest" instance=ExtResource( 7 )]
+position = Vector2( 1.43207, 443.913 )
+rotation = 0.475958
+
+[node name="SmallTree20" parent="Obstacles/WestForest" instance=ExtResource( 7 )]
+position = Vector2( 11.4559, 687.35 )
+rotation = 0.475958
+
+[node name="SmallTree11" parent="Obstacles/WestForest" instance=ExtResource( 7 )]
+position = Vector2( 525.536, 234.845 )
+rotation = -0.013895
+
+[node name="SmallTree12" parent="Obstacles/WestForest" instance=ExtResource( 7 )]
+position = Vector2( 67.303, 63.0071 )
+rotation = 0.475958
+
+[node name="SmallTree13" parent="Obstacles/WestForest" instance=ExtResource( 7 )]
+position = Vector2( 1.43195, 40.0954 )
+rotation = 0.475958
+
+[node name="SmallTree2" parent="Obstacles/WestForest" instance=ExtResource( 7 )]
+position = Vector2( 38.6634, 126.014 )
+rotation = 0.475958
+
+[node name="SmallTree3" parent="Obstacles/WestForest" instance=ExtResource( 7 )]
+position = Vector2( 280.668, 18.6157 )
+rotation = 0.475958
+
+[node name="SmallTree5" parent="Obstacles/WestForest" instance=ExtResource( 7 )]
+position = Vector2( 280.668, 18.6157 )
+rotation = 0.475958
+
+[node name="SmallTree6" parent="Obstacles/WestForest" instance=ExtResource( 7 )]
+position = Vector2( 494.033, 35.7995 )
+rotation = 0.475958
+
+[node name="SmallTree7" parent="Obstacles/WestForest" instance=ExtResource( 7 )]
+position = Vector2( 419.57, 73.031 )
+rotation = 0.475958
+
+[node name="SmallTree8" parent="Obstacles/WestForest" instance=ExtResource( 7 )]
+position = Vector2( 439.618, -21.4797 )
+rotation = 0.475958
+
+[node name="SmallTree9" parent="Obstacles/WestForest" instance=ExtResource( 7 )]
+position = Vector2( 365.155, -7.15987 )
+rotation = 0.475958
+
+[node name="SmallTree4" parent="Obstacles/WestForest" instance=ExtResource( 7 )]
+position = Vector2( 196.181, 55.8472 )
+rotation = 0.475958
+
+[node name="EastDesert" type="Node2D" parent="Obstacles"]
+
+[node name="Sandbag Beige" parent="Obstacles/EastDesert" instance=ExtResource( 7 )]
+position = Vector2( 2867.17, 836.737 )
+rotation = 0.787074
+type = 12
+
+[node name="Sandbag Beige2" parent="Obstacles/EastDesert" instance=ExtResource( 7 )]
+position = Vector2( 2692.8, 576.27 )
+rotation = 0.787074
+type = 12
+
+[node name="Small brown tree" parent="Obstacles/EastDesert" instance=ExtResource( 7 )]
+position = Vector2( 3922.48, 1368.02 )
+rotation = 0.0155999
+type = 17
+
+[node name="Small brown tree2" parent="Obstacles/EastDesert" instance=ExtResource( 7 )]
+position = Vector2( 2077.17, -83.7886 )
+rotation = 0.0155999
+type = 17
+
+[node name="Small brown tree3" parent="Obstacles/EastDesert" instance=ExtResource( 7 )]
+position = Vector2( 2968.89, 322.402 )
+rotation = -3.15318
+type = 17
+
+[node name="Barrel" parent="Obstacles/EastDesert" instance=ExtResource( 7 )]
+position = Vector2( 2239.01, 1353.74 )
+rotation = 0.787074
+type = 7
+
+[node name="Barrel2" parent="Obstacles/EastDesert" instance=ExtResource( 7 )]
+position = Vector2( 2164.44, 1355.33 )
+rotation = 0.787074
+type = 7
+
+[node name="Barrel3" parent="Obstacles/EastDesert" instance=ExtResource( 7 )]
+position = Vector2( 2099.38, 1352.16 )
+rotation = -0.0411211
+type = 7
+
+[node name="Sandbag Beige3" parent="Obstacles/EastDesert" instance=ExtResource( 7 )]
+position = Vector2( 2838.78, 928.597 )
+rotation = 1.54936
+type = 12
+
+[node name="Sandbag Beige4" parent="Obstacles/EastDesert" instance=ExtResource( 7 )]
+position = Vector2( 2912.27, 891.853 )
+rotation = 0.0069077
+type = 12
+
+[node name="Red fence" parent="Obstacles/EastDesert" instance=ExtResource( 7 )]
+position = Vector2( 3162.96, 66.7791 )
+rotation = -0.279427
+type = 10
+
+[node name="Red fence2" parent="Obstacles/EastDesert" instance=ExtResource( 7 )]
+position = Vector2( 3926.15, 442.822 )
+rotation = 0.514364
+type = 10
+[connection signal="dead" from="Player" to="." method="_on_Player_dead"]
+[connection signal="health_changed" from="Player" to="HUD" method="update_healthbar"]
+[connection signal="shoot" from="Player" to="." method="_on_Tank_shoot"]
+[connection signal="shoot" from="Paths/Path2D/PathFollow2D/EnemyTank" to="." method="_on_Tank_shoot"]
+[connection signal="shoot" from="Paths/Path2D2/PathFollow2D/EnemyTank" to="." method="_on_Tank_shoot"]
+[connection signal="shoot" from="GunTurret" to="." method="_on_Tank_shoot"]
+[connection signal="shoot" from="GunTurret2" to="." method="_on_Tank_shoot"]
+[connection signal="shoot" from="GunTurret3" to="." method="_on_Tank_shoot"]
